@@ -37,7 +37,6 @@ fn mgu(a: &Term, b: &Term) -> Result<Vec<Sub>, ()> {
     while !a_list.is_empty() && !b_list.is_empty() {
         match (a_list.remove(0), b_list.remove(0)) {
             (Term::Var(var_a), Term::Var(var_b)) => {
-                // choose an order so the results are deterministic
                 if var_a > var_b {
                     unifier.push(Sub {
                         input_variable: var_a,
@@ -57,7 +56,6 @@ fn mgu(a: &Term, b: &Term) -> Result<Vec<Sub>, ()> {
                 }
             }
             (output_term, Term::Var(input_variable)) => {
-                // anything unifies with a variable
                 unifier.push(Sub { input_variable, output_term });
                 for term in std::mem::take(&mut a_list) {
                     a_list.push(apply_subs(&unifier, term));
@@ -67,7 +65,6 @@ fn mgu(a: &Term, b: &Term) -> Result<Vec<Sub>, ()> {
                 }
             }
             (Term::Var(input_variable), output_term) => {
-                // a variable unifies with anything
                 unifier.push(Sub { input_variable, output_term });
                 for term in std::mem::take(&mut a_list) {
                     a_list.push(apply_subs(&unifier, term));
@@ -77,7 +74,6 @@ fn mgu(a: &Term, b: &Term) -> Result<Vec<Sub>, ()> {
                 }
             }
             (Term::Atom(a), Term::Atom(b)) => {
-                // atoms must match
                 if a != b {
                     return Err(());
                 }
@@ -108,9 +104,45 @@ fn resolution(
     goals: &[Term],
     query: &Term,
 ) -> (Vec<Term>, Term) {
-    unimplemented!();
+    let clause_body = match clause {
+        Clause::Fact(_) => &[],
+        Clause::Rule(_, body) => body.as_slice(),
+    };
+
+    let remaining_goals = &goals[1..];
+
+    let mut new_goals = Vec::new();
+    for term in clause_body {
+        new_goals.push(apply_subs(subs, term.clone()));
+    }
+    for term in remaining_goals {
+        new_goals.push(apply_subs(subs, term.clone()));
+    }
+
+    let new_query = apply_subs(subs, query.clone());
+
+    (new_goals, new_query)
 }
 
 pub fn solve(program: &[Clause], goals: &[Term], query: &Term) {
-    unimplemented!();
+    if goals.is_empty() {
+        succeed(query);
+        return;
+    }
+
+    let head_goal = &goals[0];
+
+    for clause in program {
+        let clause_head = match clause {
+            Clause::Fact(head) => head,
+            Clause::Rule(head, _) => head,
+        };
+
+        if let Ok(subs) = mgu(clause_head, head_goal) {
+            let (new_goals, new_query) =
+                resolution(&subs, clause, goals, query);
+
+            solve(program, &new_goals, &new_query);
+        }
+    }
 }

@@ -1,58 +1,26 @@
-Solver
-======
+Variable renaming
+=================
 
-In this step you should write the Prolog interpreter/solver as described in the
-slides:
+Modify your solver to rename variables correctly. Start by writing a helper
+function to rename all the variables in a term. I suggest:
 
-    function resolution(clause, goals, query):
-        let sub = the MGU of head(clause) and head(goals)
-        return (sub(tail(clause) concatenated with tail(goals)), sub(query))
+    fn rename_vars(term: &Term, depth: usize) -> Term { ... }
 
-    function solve(goals, query)
-        if goals is empty then succeed(query)
-        else for each clause c in the program, in order
-            if head(c) does not unify with head(goals) then do nothing
-            else solve(resolution(c, goals, query))
+Use `apply_subs` for inspiration, but `rename_vars` should be simpler. For every
+variable that it finds in the term, it should rename it by appending a hash sign
+and the depth to the end, For example:
 
-We will change this a little and use the following Rust functions:
+    X at depth 1 => X#1
+    Head at depth 5 => Head#5
 
-    fn resolution(subs: &[Sub], clause: &Clause, goals: &[Term], query: &Term) -> (Vec<Term>, Term) {}
-    pub fn solve(program: &[Clause], goals: &[Term], query: &Term) {}
+So it returns a clone of the term but with all variables renamed in this way.
 
-Note that only `solve` needs to be public as it is called from `main`.
+Next, update solve to take a `depth` parameter:
 
-`subs` is a list of substitutions to be applied in order, i.e., as new
-substitutions are found they are added to the end of the list. This is built for
-you by the `mgu` function, which is provided. You can use it by calling the
-`apply_subs` function, which takes a list of substitutions and a `Term` and
-applies the substitutions to the term.
+    pub fn solve(program: &[Clause], goals: &[Term], query: &Term, depth: usize) { ... }
 
-Note that the structure is a little different than the slides: `solve` checks to
-see if the head of the goal list and the head of clause can be unified, and if
-so it passes the MGU (a substitution list) to `resolution`, rather than having
-`resolution` re-create it as in the pseudocode.
+Every time it considers a clause in the program, it should rename all of its
+variables before calling `mgu` or `resolution`. When `solve` calls itself
+recursively, it should increment the depth.
 
-So here are the paramaters and return values for `resolution`:
-
-*   `subs`: a list of substitutions as provided by the `mgu` function and used
-    be `apply_subs`
-*   `clause`: a single clause from the program/database that unifies with the
-    head of the goal list
-*   `goals`: the list of goals that `resolution` must update
-*   `query`: the query term used to collect substitions and present results back
-    to the user
-
-Return values:
-
-*   The updated goal list
-*   The query with any new substitutions applied
-
-And here are the parameters to `solve`:
-
-*   `program`: the complete list of clauses that make up the program database.
-*   `goals`: the current list of goals that need to be solved.
-*   `query`: the original query term, with substitutions applied along the way.
-
-You can use `make run` to invoke the interpreter. It will start by having you
-type in the program database clauses, then when you enter a blank line it will
-switch to accepting queries and calling `solve` on them.
+No other changes should be needed.

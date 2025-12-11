@@ -1,0 +1,21 @@
+evenSize(nil).
+evenSize(cons(_1,cons(_2,Xs))) :-
+    evenSize(Xs).
+
+evenSize(nil).
+evenSize(cons(v1,cons(v1,nil))).
+evenSize(cons(a,cons(a,nil))).
+evenSize(cons(a,cons(b,nil))).
+evenSize(cons(v1,cons(v2,nil))).
+evenSize(cons(a,cons(b,cons(c,cons(d,nil))))).
+evenSize(cons(v1,cons(v2,cons(v3,cons(v4,nil))))).
+evenSize(cons(a,cons(a,cons(a,cons(a,cons(a,cons(a,nil))))))).
+evenSize(cons(b,cons(a,cons(d,cons(c,cons(a,cons(b,cons(q,cons(r,nil))))))))).
+evenSize(cons(v9,cons(v8,cons(v7,cons(v6,cons(v5,cons(v4,cons(v3,cons(v2,cons(v1,cons(a,nil))))))))))).
+evenSize(cons(v1,nil)).
+evenSize(cons(_,nil)).
+evenSize(cons(a,cons(b,cons(c,nil)))).
+evenSize(cons(a,cons(b,cons(c,cons(d,cons(e,nil)))))).
+evenSize(cons(a,cons(b,cons(c,cons(d,cons(e,cons(f,cons(g,nil)))))))).
+evenSize(cons(a,b)).
+evenSize(notalist).

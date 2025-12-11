@@ -1,66 +1,29 @@
-<html><head></head><body><h1>Solver</h1>
+<html><head></head><body><h1>Variable renaming</h1>
 
-<p>In this step you should write the Prolog interpreter/solver as described in the
-slides:</p>
+<p>Modify your solver to rename variables correctly. Start by writing a helper
+function to rename all the variables in a term. I suggest:</p>
 
-<pre><code>function resolution(clause, goals, query):
-    let sub = the MGU of head(clause) and head(goals)
-    return (sub(tail(clause) concatenated with tail(goals)), sub(query))
-
-function solve(goals, query)
-    if goals is empty then succeed(query)
-    else for each clause c in the program, in order
-        if head(c) does not unify with head(goals) then do nothing
-        else solve(resolution(c, goals, query))
+<pre><code>fn rename_vars(term: &amp;Term, depth: usize) -&gt; Term { ... }
 </code></pre>
 
-<p>We will change this a little and use the following Rust functions:</p>
+<p>Use <code>apply_subs</code> for inspiration, but <code>rename_vars</code> should be simpler. For every
+variable that it finds in the term, it should rename it by appending a hash sign
+and the depth to the end, For example:</p>
 
-<pre><code>fn resolution(subs: &amp;[Sub], clause: &amp;Clause, goals: &amp;[Term], query: &amp;Term) -&gt; (Vec&lt;Term&gt;, Term) {}
-pub fn solve(program: &amp;[Clause], goals: &amp;[Term], query: &amp;Term) {}
+<pre><code>X at depth 1 =&gt; X#1
+Head at depth 5 =&gt; Head#5
 </code></pre>
 
-<p>Note that only <code>solve</code> needs to be public as it is called from <code>main</code>.</p>
+<p>So it returns a clone of the term but with all variables renamed in this way.</p>
 
-<p><code>subs</code> is a list of substitutions to be applied in order, i.e., as new
-substitutions are found they are added to the end of the list. This is built for
-you by the <code>mgu</code> function, which is provided. You can use it by calling the
-<code>apply_subs</code> function, which takes a list of substitutions and a <code>Term</code> and
-applies the substitutions to the term.</p>
+<p>Next, update solve to take a <code>depth</code> parameter:</p>
 
-<p>Note that the structure is a little different than the slides: <code>solve</code> checks to
-see if the head of the goal list and the head of clause can be unified, and if
-so it passes the MGU (a substitution list) to <code>resolution</code>, rather than having
-<code>resolution</code> re-create it as in the pseudocode.</p>
+<pre><code>pub fn solve(program: &amp;[Clause], goals: &amp;[Term], query: &amp;Term, depth: usize) { ... }
+</code></pre>
 
-<p>So here are the paramaters and return values for <code>resolution</code>:</p>
+<p>Every time it considers a clause in the program, it should rename all of its
+variables before calling <code>mgu</code> or <code>resolution</code>. When <code>solve</code> calls itself
+recursively, it should increment the depth.</p>
 
-<ul>
-<li><code>subs</code>: a list of substitutions as provided by the <code>mgu</code> function and used
-be <code>apply_subs</code></li>
-<li><code>clause</code>: a single clause from the program/database that unifies with the
-head of the goal list</li>
-<li><code>goals</code>: the list of goals that <code>resolution</code> must update</li>
-<li><code>query</code>: the query term used to collect substitions and present results back
-to the user</li>
-</ul>
-
-<p>Return values:</p>
-
-<ul>
-<li>The updated goal list</li>
-<li>The query with any new substitutions applied</li>
-</ul>
-
-<p>And here are the parameters to <code>solve</code>:</p>
-
-<ul>
-<li><code>program</code>: the complete list of clauses that make up the program database.</li>
-<li><code>goals</code>: the current list of goals that need to be solved.</li>
-<li><code>query</code>: the original query term, with substitutions applied along the way.</li>
-</ul>
-
-<p>You can use <code>make run</code> to invoke the interpreter. It will start by having you
-type in the program database clauses, then when you enter a blank line it will
-switch to accepting queries and calling <code>solve</code> on them.</p>
+<p>No other changes should be needed.</p>
 </body></html>

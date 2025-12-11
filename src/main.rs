@@ -124,7 +124,7 @@ fn main() {
         println!("query: {query}.");
 
         // solve
-        solve(&program, std::slice::from_ref(&query), &query);
+        solve(&program, std::slice::from_ref(&query), &query, 1);
         println!();
     }
 }

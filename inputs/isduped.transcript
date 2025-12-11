@@ -1,0 +1,101 @@
+> 
+> Please enter clauses (blank line to end the database):
+< isDuped(nil).
+> tokens: [isDuped ( nil ) .]
+> clause: isDuped(nil).
+> 
+< isDuped(cons(X,cons(X,Xs))) :-
+<     isDuped(Xs).
+> tokens: [isDuped ( cons ( X , cons ( X , Xs ) ) ) :- isDuped ( Xs ) .]
+> clause: isDuped([X,X|Xs]) :- isDuped(Xs).
+> 
+< 
+> Please enter a query (blank line to quit):
+< isDuped(nil).
+> tokens: [isDuped ( nil ) .]
+> query: isDuped(nil).
+> SUCCESS: isDuped(nil)
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(v1,cons(v1,nil))).
+> tokens: [isDuped ( cons ( v1 , cons ( v1 , nil ) ) ) .]
+> query: isDuped([v1,v1]).
+> SUCCESS: isDuped([v1,v1])
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(v1,cons(_,nil))).
+> tokens: [isDuped ( cons ( v1 , cons ( _ , nil ) ) ) .]
+> query: isDuped([v1,_]).
+> SUCCESS: isDuped([v1,v1])
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(_1,cons(_2,nil))).
+> tokens: [isDuped ( cons ( _1 , cons ( _2 , nil ) ) ) .]
+> query: isDuped([_1,_2]).
+> SUCCESS: isDuped([X#1,X#1])
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(a,cons(a,nil))).
+> tokens: [isDuped ( cons ( a , cons ( a , nil ) ) ) .]
+> query: isDuped([a,a]).
+> SUCCESS: isDuped([a,a])
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(a,cons(a,cons(b,cons(b,nil))))).
+> tokens: [isDuped ( cons ( a , cons ( a , cons ( b , cons ( b , nil ) ) ) ) ) .]
+> query: isDuped([a,a,b,b]).
+> SUCCESS: isDuped([a,a,b,b])
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(a,cons(a,cons(b,cons(b,cons(c,cons(c,nil))))))).
+> tokens: [isDuped ( cons ( a , cons ( a , cons ( b , cons ( b , cons ( c , cons ( c , nil ) ) ) ) ) ) ) .]
+> query: isDuped([a,a,b,b,c,c]).
+> SUCCESS: isDuped([a,a,b,b,c,c])
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(a,cons(a,cons(b,cons(b,cons(c,cons(c,cons(v1,cons(v1,nil))))))))).
+> tokens: [isDuped ( cons ( a , cons ( a , cons ( b , cons ( b , cons ( c , cons ( c , cons ( v1 , cons ( v1 , nil ) ) ) ) ) ) ) ) ) .]
+> query: isDuped([a,a,b,b,c,c,v1,v1]).
+> SUCCESS: isDuped([a,a,b,b,c,c,v1,v1])
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(v1,nil)).
+> tokens: [isDuped ( cons ( v1 , nil ) ) .]
+> query: isDuped([v1]).
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(v1,cons(v2,nil))).
+> tokens: [isDuped ( cons ( v1 , cons ( v2 , nil ) ) ) .]
+> query: isDuped([v1,v2]).
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(a,nil)).
+> tokens: [isDuped ( cons ( a , nil ) ) .]
+> query: isDuped([a]).
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(_,nil)).
+> tokens: [isDuped ( cons ( _ , nil ) ) .]
+> query: isDuped([_]).
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(a,cons(b,nil))).
+> tokens: [isDuped ( cons ( a , cons ( b , nil ) ) ) .]
+> query: isDuped([a,b]).
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(a,a)).
+> tokens: [isDuped ( cons ( a , a ) ) .]
+> query: isDuped([a|a]).
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(a,cons(a,cons(b,cons(b,cons(c,cons(c,cons(d,nil)))))))).
+> tokens: [isDuped ( cons ( a , cons ( a , cons ( b , cons ( b , cons ( c , cons ( c , cons ( d , nil ) ) ) ) ) ) ) ) .]
+> query: isDuped([a,a,b,b,c,c,d]).
+> 
+> Please enter a query (blank line to quit):
+< isDuped(cons(a,cons(a,cons(b,cons(b,cons(c,cons(c,cons(d,cons(e,nil))))))))).
+> tokens: [isDuped ( cons ( a , cons ( a , cons ( b , cons ( b , cons ( c , cons ( c , cons ( d , cons ( e , nil ) ) ) ) ) ) ) ) ) .]
+> query: isDuped([a,a,b,b,c,c,d,e]).
+> 
+> Please enter a query (blank line to quit):

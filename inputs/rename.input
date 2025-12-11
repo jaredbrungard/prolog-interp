@@ -1,0 +1,13 @@
+append(nil, B, B).
+append(cons(Head,TailA), B, cons(Head,TailC)) :-
+    append(TailA, B, TailC).
+reverse(nil, nil).
+reverse(cons(Head,Tail), X) :-
+    reverse(Tail, Y),
+    append(Y, cons(Head,nil), X).
+
+append(cons(a,cons(b,nil)), cons(c,cons(d,nil)), Z).
+append(X, cons(c,cons(d,nil)), cons(a,cons(b,cons(c,cons(d,nil))))).
+append(X, Y, cons(a,cons(b,cons(c,cons(d,nil))))).
+reverse(cons(a,cons(b,nil)), cons(b,cons(a,nil))).
+reverse(cons(a,cons(b,nil)), X).

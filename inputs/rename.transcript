@@ -1,0 +1,57 @@
+> 
+> Please enter clauses (blank line to end the database):
+< append(nil, B, B).
+> tokens: [append ( nil , B , B ) .]
+> clause: append(nil,B,B).
+> 
+< append(cons(Head,TailA), B, cons(Head,TailC)) :-
+<     append(TailA, B, TailC).
+> tokens: [append ( cons ( Head , TailA ) , B , cons ( Head , TailC ) ) :- append ( TailA , B , TailC ) .]
+> clause: append([Head|TailA],B,[Head|TailC]) :- append(TailA,B,TailC).
+> 
+< reverse(nil, nil).
+> tokens: [reverse ( nil , nil ) .]
+> clause: reverse(nil,nil).
+> 
+< reverse(cons(Head,Tail), X) :-
+<     reverse(Tail, Y),
+<     append(Y, cons(Head,nil), X).
+> tokens: [reverse ( cons ( Head , Tail ) , X ) :- reverse ( Tail , Y ) , append ( Y , cons ( Head , nil ) , X ) .]
+> clause: reverse([Head|Tail],X) :- reverse(Tail,Y), append(Y,[Head],X).
+> 
+< 
+> Please enter a query (blank line to quit):
+< append(cons(a,cons(b,nil)), cons(c,cons(d,nil)), Z).
+> tokens: [append ( cons ( a , cons ( b , nil ) ) , cons ( c , cons ( d , nil ) ) , Z ) .]
+> query: append([a,b],[c,d],Z).
+> SUCCESS: append([a,b],[c,d],[a,b,c,d])
+> 
+> Please enter a query (blank line to quit):
+< append(X, cons(c,cons(d,nil)), cons(a,cons(b,cons(c,cons(d,nil))))).
+> tokens: [append ( X , cons ( c , cons ( d , nil ) ) , cons ( a , cons ( b , cons ( c , cons ( d , nil ) ) ) ) ) .]
+> query: append(X,[c,d],[a,b,c,d]).
+> SUCCESS: append([a,b],[c,d],[a,b,c,d])
+> 
+> Please enter a query (blank line to quit):
+< append(X, Y, cons(a,cons(b,cons(c,cons(d,nil))))).
+> tokens: [append ( X , Y , cons ( a , cons ( b , cons ( c , cons ( d , nil ) ) ) ) ) .]
+> query: append(X,Y,[a,b,c,d]).
+> SUCCESS: append(nil,[a,b,c,d],[a,b,c,d])
+> SUCCESS: append([a],[b,c,d],[a,b,c,d])
+> SUCCESS: append([a,b],[c,d],[a,b,c,d])
+> SUCCESS: append([a,b,c],[d],[a,b,c,d])
+> SUCCESS: append([a,b,c,d],nil,[a,b,c,d])
+> 
+> Please enter a query (blank line to quit):
+< reverse(cons(a,cons(b,nil)), cons(b,cons(a,nil))).
+> tokens: [reverse ( cons ( a , cons ( b , nil ) ) , cons ( b , cons ( a , nil ) ) ) .]
+> query: reverse([a,b],[b,a]).
+> SUCCESS: reverse([a,b],[b,a])
+> 
+> Please enter a query (blank line to quit):
+< reverse(cons(a,cons(b,nil)), X).
+> tokens: [reverse ( cons ( a , cons ( b , nil ) ) , X ) .]
+> query: reverse([a,b],X).
+> SUCCESS: reverse([a,b],[b,a])
+> 
+> Please enter a query (blank line to quit):

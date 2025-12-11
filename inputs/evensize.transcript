@@ -1,0 +1,108 @@
+> 
+> Please enter clauses (blank line to end the database):
+< evenSize(nil).
+> tokens: [evenSize ( nil ) .]
+> clause: evenSize(nil).
+> 
+< evenSize(cons(_1,cons(_2,Xs))) :-
+<     evenSize(Xs).
+> tokens: [evenSize ( cons ( _1 , cons ( _2 , Xs ) ) ) :- evenSize ( Xs ) .]
+> clause: evenSize([_1,_2|Xs]) :- evenSize(Xs).
+> 
+< 
+> Please enter a query (blank line to quit):
+< evenSize(nil).
+> tokens: [evenSize ( nil ) .]
+> query: evenSize(nil).
+> SUCCESS: evenSize(nil)
+> 
+> Please enter a query (blank line to quit):
+< evenSize(cons(v1,cons(v1,nil))).
+> tokens: [evenSize ( cons ( v1 , cons ( v1 , nil ) ) ) .]
+> query: evenSize([v1,v1]).
+> SUCCESS: evenSize([v1,v1])
+> 
+> Please enter a query (blank line to quit):
+< evenSize(cons(a,cons(a,nil))).
+> tokens: [evenSize ( cons ( a , cons ( a , nil ) ) ) .]
+> query: evenSize([a,a]).
+> SUCCESS: evenSize([a,a])
+> 
+> Please enter a query (blank line to quit):
+< evenSize(cons(a,cons(b,nil))).
+> tokens: [evenSize ( cons ( a , cons ( b , nil ) ) ) .]
+> query: evenSize([a,b]).
+> SUCCESS: evenSize([a,b])
+> 
+> Please enter a query (blank line to quit):
+< evenSize(cons(v1,cons(v2,nil))).
+> tokens: [evenSize ( cons ( v1 , cons ( v2 , nil ) ) ) .]
+> query: evenSize([v1,v2]).
+> SUCCESS: evenSize([v1,v2])
+> 
+> Please enter a query (blank line to quit):
+< evenSize(cons(a,cons(b,cons(c,cons(d,nil))))).
+> tokens: [evenSize ( cons ( a , cons ( b , cons ( c , cons ( d , nil ) ) ) ) ) .]
+> query: evenSize([a,b,c,d]).
+> SUCCESS: evenSize([a,b,c,d])
+> 
+> Please enter a query (blank line to quit):
+< evenSize(cons(v1,cons(v2,cons(v3,cons(v4,nil))))).
+> tokens: [evenSize ( cons ( v1 , cons ( v2 , cons ( v3 , cons ( v4 , nil ) ) ) ) ) .]
+> query: evenSize([v1,v2,v3,v4]).
+> SUCCESS: evenSize([v1,v2,v3,v4])
+> 
+> Please enter a query (blank line to quit):
+< evenSize(cons(a,cons(a,cons(a,cons(a,cons(a,cons(a,nil))))))).
+> tokens: [evenSize ( cons ( a , cons ( a , cons ( a , cons ( a , cons ( a , cons ( a , nil ) ) ) ) ) ) ) .]
+> query: evenSize([a,a,a,a,a,a]).
+> SUCCESS: evenSize([a,a,a,a,a,a])
+> 
+> Please enter a query (blank line to quit):
+< evenSize(cons(b,cons(a,cons(d,cons(c,cons(a,cons(b,cons(q,cons(r,nil))))))))).
+> tokens: [evenSize ( cons ( b , cons ( a , cons ( d , cons ( c , cons ( a , cons ( b , cons ( q , cons ( r , nil ) ) ) ) ) ) ) ) ) .]
+> query: evenSize([b,a,d,c,a,b,q,r]).
+> SUCCESS: evenSize([b,a,d,c,a,b,q,r])
+> 
+> Please enter a query (blank line to quit):
+< evenSize(cons(v9,cons(v8,cons(v7,cons(v6,cons(v5,cons(v4,cons(v3,cons(v2,cons(v1,cons(a,nil))))))))))).
+> tokens: [evenSize ( cons ( v9 , cons ( v8 , cons ( v7 , cons ( v6 , cons ( v5 , cons ( v4 , cons ( v3 , cons ( v2 , cons ( v1 , cons ( a , nil ) ) ) ) ) ) ) ) ) ) ) .]
+> query: evenSize([v9,v8,v7,v6,v5,v4,v3,v2,v1,a]).
+< evenSize(cons(v1,nil)).
+< evenSize(cons(_,nil)).
+< evenSize(cons(a,cons(b,cons(c,nil)))).
+< evenSize(cons(a,cons(b,cons(c,cons(d,cons(e,nil)))))).
+> SUCCESS: evenSize([v9,v8,v7,v6,v5,v4,v3,v2,v1,a])
+> 
+> Please enter a query (blank line to quit):
+> tokens: [evenSize ( cons ( v1 , nil ) ) .]
+> query: evenSize([v1]).
+> 
+> Please enter a query (blank line to quit):
+> tokens: [evenSize ( cons ( _ , nil ) ) .]
+> query: evenSize([_]).
+> 
+> Please enter a query (blank line to quit):
+> tokens: [evenSize ( cons ( a , cons ( b , cons ( c , nil ) ) ) ) .]
+> query: evenSize([a,b,c]).
+> 
+> Please enter a query (blank line to quit):
+> tokens: [evenSize ( cons ( a , cons ( b , cons ( c , cons ( d , cons ( e , nil ) ) ) ) ) ) .]
+> query: evenSize([a,b,c,d,e]).
+> 
+> Please enter a query (blank line to quit):
+< evenSize(cons(a,cons(b,cons(c,cons(d,cons(e,cons(f,cons(g,nil)))))))).
+> tokens: [evenSize ( cons ( a , cons ( b , cons ( c , cons ( d , cons ( e , cons ( f , cons ( g , nil ) ) ) ) ) ) ) ) .]
+> query: evenSize([a,b,c,d,e,f,g]).
+> 
+> Please enter a query (blank line to quit):
+< evenSize(cons(a,b)).
+> tokens: [evenSize ( cons ( a , b ) ) .]
+> query: evenSize([a|b]).
+> 
+> Please enter a query (blank line to quit):
+< evenSize(notalist).
+> tokens: [evenSize ( notalist ) .]
+> query: evenSize(notalist).
+> 
+> Please enter a query (blank line to quit):

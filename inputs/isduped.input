@@ -1,0 +1,20 @@
+isDuped(nil).
+isDuped(cons(X,cons(X,Xs))) :-
+    isDuped(Xs).
+
+isDuped(nil).
+isDuped(cons(v1,cons(v1,nil))).
+isDuped(cons(v1,cons(_,nil))).
+isDuped(cons(_1,cons(_2,nil))).
+isDuped(cons(a,cons(a,nil))).
+isDuped(cons(a,cons(a,cons(b,cons(b,nil))))).
+isDuped(cons(a,cons(a,cons(b,cons(b,cons(c,cons(c,nil))))))).
+isDuped(cons(a,cons(a,cons(b,cons(b,cons(c,cons(c,cons(v1,cons(v1,nil))))))))).
+isDuped(cons(v1,nil)).
+isDuped(cons(v1,cons(v2,nil))).
+isDuped(cons(a,nil)).
+isDuped(cons(_,nil)).
+isDuped(cons(a,cons(b,nil))).
+isDuped(cons(a,a)).
+isDuped(cons(a,cons(a,cons(b,cons(b,cons(c,cons(c,cons(d,nil)))))))).
+isDuped(cons(a,cons(a,cons(b,cons(b,cons(c,cons(c,cons(d,cons(e,nil))))))))).
