@@ -1,0 +1,145 @@
+> 
+> Please enter clauses (blank line to end the database):
+< parent(shmi,vader).
+> tokens: [parent ( shmi , vader ) .]
+> clause: parent(shmi,vader).
+> 
+< parent(ruweee,padme).
+> tokens: [parent ( ruweee , padme ) .]
+> clause: parent(ruweee,padme).
+> 
+< parent(jobal,padme).
+> tokens: [parent ( jobal , padme ) .]
+> clause: parent(jobal,padme).
+> 
+< parent(vader,luke).
+> tokens: [parent ( vader , luke ) .]
+> clause: parent(vader,luke).
+> 
+< parent(vader,leia).
+> tokens: [parent ( vader , leia ) .]
+> clause: parent(vader,leia).
+> 
+< parent(padme,luke).
+> tokens: [parent ( padme , luke ) .]
+> clause: parent(padme,luke).
+> 
+< parent(padme,leia).
+> tokens: [parent ( padme , leia ) .]
+> clause: parent(padme,leia).
+> 
+< parent(luke,ben).
+> tokens: [parent ( luke , ben ) .]
+> clause: parent(luke,ben).
+> 
+< parent(mara,ben).
+> tokens: [parent ( mara , ben ) .]
+> clause: parent(mara,ben).
+> 
+< parent(leia,jaina).
+> tokens: [parent ( leia , jaina ) .]
+> clause: parent(leia,jaina).
+> 
+< parent(leia,jacen).
+> tokens: [parent ( leia , jacen ) .]
+> clause: parent(leia,jacen).
+> 
+< parent(leia,anakin).
+> tokens: [parent ( leia , anakin ) .]
+> clause: parent(leia,anakin).
+> 
+< parent(han,jaina).
+> tokens: [parent ( han , jaina ) .]
+> clause: parent(han,jaina).
+> 
+< parent(han,jacen).
+> tokens: [parent ( han , jacen ) .]
+> clause: parent(han,jacen).
+> 
+< parent(han,anakin).
+> tokens: [parent ( han , anakin ) .]
+> clause: parent(han,anakin).
+> 
+< female(shmi).
+> tokens: [female ( shmi ) .]
+> clause: female(shmi).
+> 
+< female(jobal).
+> tokens: [female ( jobal ) .]
+> clause: female(jobal).
+> 
+< female(padme).
+> tokens: [female ( padme ) .]
+> clause: female(padme).
+> 
+< female(mara).
+> tokens: [female ( mara ) .]
+> clause: female(mara).
+> 
+< female(leia).
+> tokens: [female ( leia ) .]
+> clause: female(leia).
+> 
+< female(jaina).
+> tokens: [female ( jaina ) .]
+> clause: female(jaina).
+> 
+< male(ruweee).
+> tokens: [male ( ruweee ) .]
+> clause: male(ruweee).
+> 
+< male(vader).
+> tokens: [male ( vader ) .]
+> clause: male(vader).
+> 
+< male(luke).
+> tokens: [male ( luke ) .]
+> clause: male(luke).
+> 
+< male(han).
+> tokens: [male ( han ) .]
+> clause: male(han).
+> 
+< male(ben).
+> tokens: [male ( ben ) .]
+> clause: male(ben).
+> 
+< male(jacen).
+> tokens: [male ( jacen ) .]
+> clause: male(jacen).
+> 
+< male(anakin).
+> tokens: [male ( anakin ) .]
+> clause: male(anakin).
+> 
+< mother(X,Y) :-
+<     female(X),
+<     parent(X,Y).
+> tokens: [mother ( X , Y ) :- female ( X ) , parent ( X , Y ) .]
+> clause: mother(X,Y) :- female(X), parent(X,Y).
+> 
+< father(X,Y) :-
+<     male(X),
+<     parent(X,Y).
+> tokens: [father ( X , Y ) :- male ( X ) , parent ( X , Y ) .]
+> clause: father(X,Y) :- male(X), parent(X,Y).
+> 
+< grandson(X,Y) :-
+<     male(X),
+<     parent(P,X),
+<     parent(Y,P).
+> tokens: [grandson ( X , Y ) :- male ( X ) , parent ( P , X ) , parent ( Y , P ) .]
+> clause: grandson(X,Y) :- male(X), parent(P,X), parent(Y,P).
+> 
+< descendent(X,Y) :- parent(Y,X).
+> tokens: [descendent ( X , Y ) :- parent ( Y , X ) .]
+> clause: descendent(X,Y) :- parent(Y,X).
+> 
+< descendent(X,Y) :-
+<     parent(P,X),
+<     descendent(P,Y).
+> tokens: [descendent ( X , Y ) :- parent ( P , X ) , descendent ( P , Y ) .]
+> clause: descendent(X,Y) :- parent(P,X), descendent(P,Y).
+> 
+< 
+> Please enter a query (blank line to quit):

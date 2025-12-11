@@ -1,0 +1,34 @@
+<html><head></head><body><h1>Parser</h1>
+
+<p>Write a parser for a simple Prolog interpreter. You should base the structure of
+your parser on the parsers from other assignments.</p>
+
+<p>Here is the grammar you should implement:</p>
+
+<pre><code>term             -&gt; variable | atom ( termlist ) | atom
+termlist         -&gt; term | term , termlist
+clause           -&gt; fact | rule
+fact             -&gt; term .
+rule             -&gt; term :- termlist .
+</code></pre>
+
+<p>A few relevant details:</p>
+
+<ul>
+<li><p>Implement the parser in <code>parse.rs</code>.</p></li>
+
+<li><p>I have provided a complete tokenizer. See <code>tokenize.rs</code> for its definition.</p></li>
+
+<li><p>The other types (Clause and Term) are defined in <code>types.rs</code>.</p></li>
+
+<li><p>The public interface (used by <code>main</code>) is the functions <code>parse_clause</code> and
+<code>parse_query</code>. They each create a <code>Parser</code> object and expect to call a
+method on it. Use these to figure out what is required.</p></li>
+
+<li><p><code>inputs/tests.input</code> gives a bunch of examples of clauses that will need to
+parse. Make sure you understand how the grammar relates to the inputs before
+you begin.</p></li>
+</ul>
+
+<p>You may also find the slides for Prolog to be helpful for review.</p>
+</body></html>
