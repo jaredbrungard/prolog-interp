@@ -41,3 +41,12 @@ descendent(X,Y) :-
     parent(P,X),
     descendent(P,Y).
 
+parent(vader,leia).
+female(padme).
+male(han).
+parent(X,leia).
+parent(padme,Child).
+male(Bro).
+mother(Mother,Child).
+descendent(X,shmi).
+descendent(X,Y).

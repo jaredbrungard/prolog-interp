@@ -1,0 +1,68 @@
+> 
+> Please enter clauses (blank line to end the database):
+< third(cons(_1,cons(_2,cons(Y,_3))),Y).
+> tokens: [third ( cons ( _1 , cons ( _2 , cons ( Y , _3 ) ) ) , Y ) .]
+> clause: third([_1,_2,Y|_3],Y).
+> 
+< 
+> Please enter a query (blank line to quit):
+< third(cons(v1,cons(v2,cons(v3,cons(v4,cons(v5,nil))))),v3).
+> tokens: [third ( cons ( v1 , cons ( v2 , cons ( v3 , cons ( v4 , cons ( v5 , nil ) ) ) ) ) , v3 ) .]
+> query: third([v1,v2,v3,v4,v5],v3).
+> SUCCESS: third([v1,v2,v3,v4,v5],v3)
+> 
+> Please enter a query (blank line to quit):
+< third(cons(v2,cons(v3,cons(v4,cons(v5,nil)))),v4).
+> tokens: [third ( cons ( v2 , cons ( v3 , cons ( v4 , cons ( v5 , nil ) ) ) ) , v4 ) .]
+> query: third([v2,v3,v4,v5],v4).
+> SUCCESS: third([v2,v3,v4,v5],v4)
+> 
+> Please enter a query (blank line to quit):
+< third(cons(a,cons(b,cons(c,cons(d,nil)))),c).
+> tokens: [third ( cons ( a , cons ( b , cons ( c , cons ( d , nil ) ) ) ) , c ) .]
+> query: third([a,b,c,d],c).
+> SUCCESS: third([a,b,c,d],c)
+> 
+> Please enter a query (blank line to quit):
+< third(cons(a,cons(b,cons(c,nil))),c).
+> tokens: [third ( cons ( a , cons ( b , cons ( c , nil ) ) ) , c ) .]
+> query: third([a,b,c],c).
+> SUCCESS: third([a,b,c],c)
+> 
+> Please enter a query (blank line to quit):
+< third(cons(a,cons(b,cons(c,d))),c).
+> tokens: [third ( cons ( a , cons ( b , cons ( c , d ) ) ) , c ) .]
+> query: third([a,b,c|d],c).
+> SUCCESS: third([a,b,c|d],c)
+> 
+> Please enter a query (blank line to quit):
+< third(cons(v1,cons(v2,cons(v3,cons(v4,nil)))),v2).
+> tokens: [third ( cons ( v1 , cons ( v2 , cons ( v3 , cons ( v4 , nil ) ) ) ) , v2 ) .]
+> query: third([v1,v2,v3,v4],v2).
+> 
+> Please enter a query (blank line to quit):
+< third(cons(v1,cons(v2,cons(v3,cons(v4,nil)))),v4).
+> tokens: [third ( cons ( v1 , cons ( v2 , cons ( v3 , cons ( v4 , nil ) ) ) ) , v4 ) .]
+> query: third([v1,v2,v3,v4],v4).
+> 
+> Please enter a query (blank line to quit):
+< third(cons(a,cons(b,cons(c,cons(d,nil)))),b).
+> tokens: [third ( cons ( a , cons ( b , cons ( c , cons ( d , nil ) ) ) ) , b ) .]
+> query: third([a,b,c,d],b).
+> 
+> Please enter a query (blank line to quit):
+< third(cons(a,cons(b,cons(c,cons(d,nil)))),d).
+> tokens: [third ( cons ( a , cons ( b , cons ( c , cons ( d , nil ) ) ) ) , d ) .]
+> query: third([a,b,c,d],d).
+> 
+> Please enter a query (blank line to quit):
+< third(cons(a,cons(b,nil)),a).
+> tokens: [third ( cons ( a , cons ( b , nil ) ) , a ) .]
+> query: third([a,b],a).
+> 
+> Please enter a query (blank line to quit):
+< third(notalist,a).
+> tokens: [third ( notalist , a ) .]
+> query: third(notalist,a).
+> 
+> Please enter a query (blank line to quit):

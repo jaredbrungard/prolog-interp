@@ -1,0 +1,74 @@
+> 
+> Please enter clauses (blank line to end the database):
+< del3(cons(X,cons(Y,cons(_,Z))),cons(X,cons(Y,Z))).
+> tokens: [del3 ( cons ( X , cons ( Y , cons ( _ , Z ) ) ) , cons ( X , cons ( Y , Z ) ) ) .]
+> clause: del3([X,Y,_|Z],[X,Y|Z]).
+> 
+< 
+> Please enter a query (blank line to quit):
+< del3(cons(v1,cons(v2,cons(v3,cons(v4,nil)))),cons(v1,cons(v2,cons(v4,nil)))).
+> tokens: [del3 ( cons ( v1 , cons ( v2 , cons ( v3 , cons ( v4 , nil ) ) ) ) , cons ( v1 , cons ( v2 , cons ( v4 , nil ) ) ) ) .]
+> query: del3([v1,v2,v3,v4],[v1,v2,v4]).
+> SUCCESS: del3([v1,v2,v3,v4],[v1,v2,v4])
+> 
+> Please enter a query (blank line to quit):
+< del3(cons(v1,cons(v2,cons(v3,nil))),cons(v1,cons(v2,nil))).
+> tokens: [del3 ( cons ( v1 , cons ( v2 , cons ( v3 , nil ) ) ) , cons ( v1 , cons ( v2 , nil ) ) ) .]
+> query: del3([v1,v2,v3],[v1,v2]).
+> SUCCESS: del3([v1,v2,v3],[v1,v2])
+> 
+> Please enter a query (blank line to quit):
+< del3(cons(a,cons(b,cons(c,cons(d,nil)))),cons(a,cons(b,cons(d,nil)))).
+> tokens: [del3 ( cons ( a , cons ( b , cons ( c , cons ( d , nil ) ) ) ) , cons ( a , cons ( b , cons ( d , nil ) ) ) ) .]
+> query: del3([a,b,c,d],[a,b,d]).
+> SUCCESS: del3([a,b,c,d],[a,b,d])
+> 
+> Please enter a query (blank line to quit):
+< del3(cons(a,cons(b,cons(c,nil))),cons(a,cons(b,nil))).
+> tokens: [del3 ( cons ( a , cons ( b , cons ( c , nil ) ) ) , cons ( a , cons ( b , nil ) ) ) .]
+> query: del3([a,b,c],[a,b]).
+> SUCCESS: del3([a,b,c],[a,b])
+> 
+> Please enter a query (blank line to quit):
+< del3(cons(a,cons(b,cons(c,d))),cons(a,cons(b,d))).
+> tokens: [del3 ( cons ( a , cons ( b , cons ( c , d ) ) ) , cons ( a , cons ( b , d ) ) ) .]
+> query: del3([a,b,c|d],[a,b|d]).
+> SUCCESS: del3([a,b,c|d],[a,b|d])
+> 
+> Please enter a query (blank line to quit):
+< del3(cons(v1,cons(v2,cons(v3,cons(v4,nil)))),cons(v1,cons(v3,cons(v4,nil)))).
+> tokens: [del3 ( cons ( v1 , cons ( v2 , cons ( v3 , cons ( v4 , nil ) ) ) ) , cons ( v1 , cons ( v3 , cons ( v4 , nil ) ) ) ) .]
+> query: del3([v1,v2,v3,v4],[v1,v3,v4]).
+> 
+> Please enter a query (blank line to quit):
+< del3(cons(v1,cons(v2,cons(v3,cons(v4,nil)))),cons(v1,cons(v2,cons(v3,nil)))).
+> tokens: [del3 ( cons ( v1 , cons ( v2 , cons ( v3 , cons ( v4 , nil ) ) ) ) , cons ( v1 , cons ( v2 , cons ( v3 , nil ) ) ) ) .]
+> query: del3([v1,v2,v3,v4],[v1,v2,v3]).
+> 
+> Please enter a query (blank line to quit):
+< del3(cons(a,cons(b,cons(c,cons(d,nil)))),cons(a,cons(c,cons(d,nil)))).
+> tokens: [del3 ( cons ( a , cons ( b , cons ( c , cons ( d , nil ) ) ) ) , cons ( a , cons ( c , cons ( d , nil ) ) ) ) .]
+> query: del3([a,b,c,d],[a,c,d]).
+> 
+> Please enter a query (blank line to quit):
+< del3(cons(a,cons(b,cons(c,cons(d,nil)))),cons(a,cons(b,cons(c,nil)))).
+> tokens: [del3 ( cons ( a , cons ( b , cons ( c , cons ( d , nil ) ) ) ) , cons ( a , cons ( b , cons ( c , nil ) ) ) ) .]
+> query: del3([a,b,c,d],[a,b,c]).
+> 
+> Please enter a query (blank line to quit):
+< del3(cons(a,cons(b,nil)),cons(a,cons(b,nil))).
+> tokens: [del3 ( cons ( a , cons ( b , nil ) ) , cons ( a , cons ( b , nil ) ) ) .]
+> query: del3([a,b],[a,b]).
+> 
+> Please enter a query (blank line to quit):
+< del3(cons(a,cons(b,cons(c,d))),cons(a,cons(b,nil))).
+> tokens: [del3 ( cons ( a , cons ( b , cons ( c , d ) ) ) , cons ( a , cons ( b , nil ) ) ) .]
+> query: del3([a,b,c|d],[a,b]).
+> 
+> Please enter a query (blank line to quit):
+< del3(notalist,_).
+> tokens: [del3 ( notalist , _ ) .]
+> query: del3(notalist,_).
+> 
+> Please enter a query (blank line to quit):
+< 

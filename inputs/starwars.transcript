@@ -1,0 +1,260 @@
+> 
+> Please enter clauses (blank line to end the database):
+< parent(shmi,vader).
+> tokens: [parent ( shmi , vader ) .]
+> clause: parent(shmi,vader).
+> 
+< parent(ruweee,padme).
+> tokens: [parent ( ruweee , padme ) .]
+> clause: parent(ruweee,padme).
+> 
+< parent(jobal,padme).
+> tokens: [parent ( jobal , padme ) .]
+> clause: parent(jobal,padme).
+> 
+< parent(vader,luke).
+> tokens: [parent ( vader , luke ) .]
+> clause: parent(vader,luke).
+> 
+< parent(vader,leia).
+> tokens: [parent ( vader , leia ) .]
+> clause: parent(vader,leia).
+> 
+< parent(padme,luke).
+> tokens: [parent ( padme , luke ) .]
+> clause: parent(padme,luke).
+> 
+< parent(padme,leia).
+> tokens: [parent ( padme , leia ) .]
+> clause: parent(padme,leia).
+> 
+< parent(luke,ben).
+> tokens: [parent ( luke , ben ) .]
+> clause: parent(luke,ben).
+> 
+< parent(mara,ben).
+> tokens: [parent ( mara , ben ) .]
+> clause: parent(mara,ben).
+> 
+< parent(leia,jaina).
+> tokens: [parent ( leia , jaina ) .]
+> clause: parent(leia,jaina).
+> 
+< parent(leia,jacen).
+> tokens: [parent ( leia , jacen ) .]
+> clause: parent(leia,jacen).
+> 
+< parent(leia,anakin).
+> tokens: [parent ( leia , anakin ) .]
+> clause: parent(leia,anakin).
+> 
+< parent(han,jaina).
+> tokens: [parent ( han , jaina ) .]
+> clause: parent(han,jaina).
+> 
+< parent(han,jacen).
+> tokens: [parent ( han , jacen ) .]
+> clause: parent(han,jacen).
+> 
+< parent(han,anakin).
+> tokens: [parent ( han , anakin ) .]
+> clause: parent(han,anakin).
+> 
+< female(shmi).
+> tokens: [female ( shmi ) .]
+> clause: female(shmi).
+> 
+< female(jobal).
+> tokens: [female ( jobal ) .]
+> clause: female(jobal).
+> 
+< female(padme).
+> tokens: [female ( padme ) .]
+> clause: female(padme).
+> 
+< female(mara).
+> tokens: [female ( mara ) .]
+> clause: female(mara).
+> 
+< female(leia).
+> tokens: [female ( leia ) .]
+> clause: female(leia).
+> 
+< female(jaina).
+> tokens: [female ( jaina ) .]
+> clause: female(jaina).
+> 
+< male(ruweee).
+> tokens: [male ( ruweee ) .]
+> clause: male(ruweee).
+> 
+< male(vader).
+> tokens: [male ( vader ) .]
+> clause: male(vader).
+> 
+< male(luke).
+> tokens: [male ( luke ) .]
+> clause: male(luke).
+> 
+< male(han).
+> tokens: [male ( han ) .]
+> clause: male(han).
+> 
+< male(ben).
+> tokens: [male ( ben ) .]
+> clause: male(ben).
+> 
+< male(jacen).
+> tokens: [male ( jacen ) .]
+> clause: male(jacen).
+> 
+< male(anakin).
+> tokens: [male ( anakin ) .]
+> clause: male(anakin).
+> 
+< mother(X,Y) :-
+<     female(X),
+<     parent(X,Y).
+> tokens: [mother ( X , Y ) :- female ( X ) , parent ( X , Y ) .]
+> clause: mother(X,Y) :- female(X), parent(X,Y).
+> 
+< father(X,Y) :-
+<     male(X),
+<     parent(X,Y).
+> tokens: [father ( X , Y ) :- male ( X ) , parent ( X , Y ) .]
+> clause: father(X,Y) :- male(X), parent(X,Y).
+> 
+< grandson(X,Y) :-
+<     male(X),
+<     parent(P,X),
+<     parent(Y,P).
+> tokens: [grandson ( X , Y ) :- male ( X ) , parent ( P , X ) , parent ( Y , P ) .]
+> clause: grandson(X,Y) :- male(X), parent(P,X), parent(Y,P).
+> 
+< descendent(X,Y) :- parent(Y,X).
+> tokens: [descendent ( X , Y ) :- parent ( Y , X ) .]
+> clause: descendent(X,Y) :- parent(Y,X).
+> 
+< descendent(X,Y) :-
+<     parent(P,X),
+<     descendent(P,Y).
+> tokens: [descendent ( X , Y ) :- parent ( P , X ) , descendent ( P , Y ) .]
+> clause: descendent(X,Y) :- parent(P,X), descendent(P,Y).
+> 
+< 
+> Please enter a query (blank line to quit):
+< parent(vader,leia).
+> tokens: [parent ( vader , leia ) .]
+> query: parent(vader,leia).
+> SUCCESS: parent(vader,leia)
+> 
+> Please enter a query (blank line to quit):
+< female(padme).
+> tokens: [female ( padme ) .]
+> query: female(padme).
+> SUCCESS: female(padme)
+> 
+> Please enter a query (blank line to quit):
+< male(han).
+> tokens: [male ( han ) .]
+> query: male(han).
+> SUCCESS: male(han)
+> 
+> Please enter a query (blank line to quit):
+< parent(X,leia).
+> tokens: [parent ( X , leia ) .]
+> query: parent(X,leia).
+> SUCCESS: parent(vader,leia)
+> SUCCESS: parent(padme,leia)
+> 
+> Please enter a query (blank line to quit):
+< parent(padme,Child).
+> tokens: [parent ( padme , Child ) .]
+> query: parent(padme,Child).
+> SUCCESS: parent(padme,luke)
+> SUCCESS: parent(padme,leia)
+> 
+> Please enter a query (blank line to quit):
+< male(Bro).
+> tokens: [male ( Bro ) .]
+> query: male(Bro).
+> SUCCESS: male(ruweee)
+> SUCCESS: male(vader)
+> SUCCESS: male(luke)
+> SUCCESS: male(han)
+> SUCCESS: male(ben)
+> SUCCESS: male(jacen)
+> SUCCESS: male(anakin)
+> 
+> Please enter a query (blank line to quit):
+< mother(Mother,Child).
+> tokens: [mother ( Mother , Child ) .]
+> query: mother(Mother,Child).
+> SUCCESS: mother(shmi,vader)
+> SUCCESS: mother(jobal,padme)
+> SUCCESS: mother(padme,luke)
+> SUCCESS: mother(padme,leia)
+> SUCCESS: mother(mara,ben)
+> SUCCESS: mother(leia,jaina)
+> SUCCESS: mother(leia,jacen)
+> SUCCESS: mother(leia,anakin)
+> 
+> Please enter a query (blank line to quit):
+< descendent(X,shmi).
+> tokens: [descendent ( X , shmi ) .]
+> query: descendent(X,shmi).
+> SUCCESS: descendent(vader,shmi)
+> SUCCESS: descendent(luke,shmi)
+> SUCCESS: descendent(leia,shmi)
+> SUCCESS: descendent(ben,shmi)
+> SUCCESS: descendent(jaina,shmi)
+> SUCCESS: descendent(jacen,shmi)
+> SUCCESS: descendent(anakin,shmi)
+> 
+> Please enter a query (blank line to quit):
+< descendent(X,Y).
+> tokens: [descendent ( X , Y ) .]
+> query: descendent(X,Y).
+> SUCCESS: descendent(vader,shmi)
+> SUCCESS: descendent(padme,ruweee)
+> SUCCESS: descendent(padme,jobal)
+> SUCCESS: descendent(luke,vader)
+> SUCCESS: descendent(leia,vader)
+> SUCCESS: descendent(luke,padme)
+> SUCCESS: descendent(leia,padme)
+> SUCCESS: descendent(ben,luke)
+> SUCCESS: descendent(ben,mara)
+> SUCCESS: descendent(jaina,leia)
+> SUCCESS: descendent(jacen,leia)
+> SUCCESS: descendent(anakin,leia)
+> SUCCESS: descendent(jaina,han)
+> SUCCESS: descendent(jacen,han)
+> SUCCESS: descendent(anakin,han)
+> SUCCESS: descendent(luke,shmi)
+> SUCCESS: descendent(leia,shmi)
+> SUCCESS: descendent(luke,ruweee)
+> SUCCESS: descendent(luke,jobal)
+> SUCCESS: descendent(leia,ruweee)
+> SUCCESS: descendent(leia,jobal)
+> SUCCESS: descendent(ben,vader)
+> SUCCESS: descendent(ben,padme)
+> SUCCESS: descendent(ben,shmi)
+> SUCCESS: descendent(ben,ruweee)
+> SUCCESS: descendent(ben,jobal)
+> SUCCESS: descendent(jaina,vader)
+> SUCCESS: descendent(jaina,padme)
+> SUCCESS: descendent(jaina,shmi)
+> SUCCESS: descendent(jaina,ruweee)
+> SUCCESS: descendent(jaina,jobal)
+> SUCCESS: descendent(jacen,vader)
+> SUCCESS: descendent(jacen,padme)
+> SUCCESS: descendent(jacen,shmi)
+> SUCCESS: descendent(jacen,ruweee)
+> SUCCESS: descendent(jacen,jobal)
+> SUCCESS: descendent(anakin,vader)
+> SUCCESS: descendent(anakin,padme)
+> SUCCESS: descendent(anakin,shmi)
+> SUCCESS: descendent(anakin,ruweee)
+> SUCCESS: descendent(anakin,jobal)
+> 
+> Please enter a query (blank line to quit):

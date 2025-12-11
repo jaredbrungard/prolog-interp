@@ -1,0 +1,15 @@
+del3(cons(X,cons(Y,cons(_,Z))),cons(X,cons(Y,Z))).
+
+del3(cons(v1,cons(v2,cons(v3,cons(v4,nil)))),cons(v1,cons(v2,cons(v4,nil)))).
+del3(cons(v1,cons(v2,cons(v3,nil))),cons(v1,cons(v2,nil))).
+del3(cons(a,cons(b,cons(c,cons(d,nil)))),cons(a,cons(b,cons(d,nil)))).
+del3(cons(a,cons(b,cons(c,nil))),cons(a,cons(b,nil))).
+del3(cons(a,cons(b,cons(c,d))),cons(a,cons(b,d))).
+del3(cons(v1,cons(v2,cons(v3,cons(v4,nil)))),cons(v1,cons(v3,cons(v4,nil)))).
+del3(cons(v1,cons(v2,cons(v3,cons(v4,nil)))),cons(v1,cons(v2,cons(v3,nil)))).
+del3(cons(a,cons(b,cons(c,cons(d,nil)))),cons(a,cons(c,cons(d,nil)))).
+del3(cons(a,cons(b,cons(c,cons(d,nil)))),cons(a,cons(b,cons(c,nil)))).
+del3(cons(a,cons(b,nil)),cons(a,cons(b,nil))).
+del3(cons(a,cons(b,cons(c,d))),cons(a,cons(b,nil))).
+del3(notalist,_).
+

@@ -1,0 +1,13 @@
+third(cons(_1,cons(_2,cons(Y,_3))),Y).
+
+third(cons(v1,cons(v2,cons(v3,cons(v4,cons(v5,nil))))),v3).
+third(cons(v2,cons(v3,cons(v4,cons(v5,nil)))),v4).
+third(cons(a,cons(b,cons(c,cons(d,nil)))),c).
+third(cons(a,cons(b,cons(c,nil))),c).
+third(cons(a,cons(b,cons(c,d))),c).
+third(cons(v1,cons(v2,cons(v3,cons(v4,nil)))),v2).
+third(cons(v1,cons(v2,cons(v3,cons(v4,nil)))),v4).
+third(cons(a,cons(b,cons(c,cons(d,nil)))),b).
+third(cons(a,cons(b,cons(c,cons(d,nil)))),d).
+third(cons(a,cons(b,nil)),a).
+third(notalist,a).

@@ -1,0 +1,28 @@
+> 
+> Please enter clauses (blank line to end the database):
+< p(f(Y)) :-
+<     q(Y),
+<     r(Y).
+> tokens: [p ( f ( Y ) ) :- q ( Y ) , r ( Y ) .]
+> clause: p(f(Y)) :- q(Y), r(Y).
+> 
+< q(g(Z)).
+> tokens: [q ( g ( Z ) ) .]
+> clause: q(g(Z)).
+> 
+< q(h(Z)).
+> tokens: [q ( h ( Z ) ) .]
+> clause: q(h(Z)).
+> 
+< r(h(a)).
+> tokens: [r ( h ( a ) ) .]
+> clause: r(h(a)).
+> 
+< 
+> Please enter a query (blank line to quit):
+< p(X).
+> tokens: [p ( X ) .]
+> query: p(X).
+> SUCCESS: p(f(h(a)))
+> 
+> Please enter a query (blank line to quit):

@@ -1,8 +1,10 @@
 mod parse;
+mod solve;
 mod tokenize;
 mod types;
 
 use crate::parse::{parse_clause, parse_query};
+use crate::solve::solve;
 use crate::tokenize::tokenize;
 use crate::types::Token;
 use std::io;
@@ -120,5 +122,9 @@ fn main() {
             }
         };
         println!("query: {query}.");
+
+        // solve
+        solve(&program, std::slice::from_ref(&query), &query);
+        println!();
     }
 }

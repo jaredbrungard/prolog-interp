@@ -1,34 +1,66 @@
-<html><head></head><body><h1>Parser</h1>
+<html><head></head><body><h1>Solver</h1>
 
-<p>Write a parser for a simple Prolog interpreter. You should base the structure of
-your parser on the parsers from other assignments.</p>
+<p>In this step you should write the Prolog interpreter/solver as described in the
+slides:</p>
 
-<p>Here is the grammar you should implement:</p>
+<pre><code>function resolution(clause, goals, query):
+    let sub = the MGU of head(clause) and head(goals)
+    return (sub(tail(clause) concatenated with tail(goals)), sub(query))
 
-<pre><code>term             -&gt; variable | atom ( termlist ) | atom
-termlist         -&gt; term | term , termlist
-clause           -&gt; fact | rule
-fact             -&gt; term .
-rule             -&gt; term :- termlist .
+function solve(goals, query)
+    if goals is empty then succeed(query)
+    else for each clause c in the program, in order
+        if head(c) does not unify with head(goals) then do nothing
+        else solve(resolution(c, goals, query))
 </code></pre>
 
-<p>A few relevant details:</p>
+<p>We will change this a little and use the following Rust functions:</p>
+
+<pre><code>fn resolution(subs: &amp;[Sub], clause: &amp;Clause, goals: &amp;[Term], query: &amp;Term) -&gt; (Vec&lt;Term&gt;, Term) {}
+pub fn solve(program: &amp;[Clause], goals: &amp;[Term], query: &amp;Term) {}
+</code></pre>
+
+<p>Note that only <code>solve</code> needs to be public as it is called from <code>main</code>.</p>
+
+<p><code>subs</code> is a list of substitutions to be applied in order, i.e., as new
+substitutions are found they are added to the end of the list. This is built for
+you by the <code>mgu</code> function, which is provided. You can use it by calling the
+<code>apply_subs</code> function, which takes a list of substitutions and a <code>Term</code> and
+applies the substitutions to the term.</p>
+
+<p>Note that the structure is a little different than the slides: <code>solve</code> checks to
+see if the head of the goal list and the head of clause can be unified, and if
+so it passes the MGU (a substitution list) to <code>resolution</code>, rather than having
+<code>resolution</code> re-create it as in the pseudocode.</p>
+
+<p>So here are the paramaters and return values for <code>resolution</code>:</p>
 
 <ul>
-<li><p>Implement the parser in <code>parse.rs</code>.</p></li>
-
-<li><p>I have provided a complete tokenizer. See <code>tokenize.rs</code> for its definition.</p></li>
-
-<li><p>The other types (Clause and Term) are defined in <code>types.rs</code>.</p></li>
-
-<li><p>The public interface (used by <code>main</code>) is the functions <code>parse_clause</code> and
-<code>parse_query</code>. They each create a <code>Parser</code> object and expect to call a
-method on it. Use these to figure out what is required.</p></li>
-
-<li><p><code>inputs/tests.input</code> gives a bunch of examples of clauses that will need to
-parse. Make sure you understand how the grammar relates to the inputs before
-you begin.</p></li>
+<li><code>subs</code>: a list of substitutions as provided by the <code>mgu</code> function and used
+be <code>apply_subs</code></li>
+<li><code>clause</code>: a single clause from the program/database that unifies with the
+head of the goal list</li>
+<li><code>goals</code>: the list of goals that <code>resolution</code> must update</li>
+<li><code>query</code>: the query term used to collect substitions and present results back
+to the user</li>
 </ul>
 
-<p>You may also find the slides for Prolog to be helpful for review.</p>
+<p>Return values:</p>
+
+<ul>
+<li>The updated goal list</li>
+<li>The query with any new substitutions applied</li>
+</ul>
+
+<p>And here are the parameters to <code>solve</code>:</p>
+
+<ul>
+<li><code>program</code>: the complete list of clauses that make up the program database.</li>
+<li><code>goals</code>: the current list of goals that need to be solved.</li>
+<li><code>query</code>: the original query term, with substitutions applied along the way.</li>
+</ul>
+
+<p>You can use <code>make run</code> to invoke the interpreter. It will start by having you
+type in the program database clauses, then when you enter a blank line it will
+switch to accepting queries and calling <code>solve</code> on them.</p>
 </body></html>
